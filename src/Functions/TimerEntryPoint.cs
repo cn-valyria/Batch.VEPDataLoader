@@ -13,7 +13,7 @@ namespace Functions
         public TimerEntryPoint(IVepDbRepository vepDbRepository) => _vepDbRepository = vepDbRepository;
 
         [FunctionName(nameof(LoadTodaysData))]
-        public async Task LoadTodaysData([TimerTrigger("0 30 1 * * *")]TimerInfo myTimer, ILogger log)
+        public async Task LoadTodaysData([TimerTrigger("0 30 13 * * *")]TimerInfo myTimer, ILogger log)
         {
             log.LogInformation($"{nameof(LoadTodaysData)} function started execution at: {DateTime.Now}");
 
