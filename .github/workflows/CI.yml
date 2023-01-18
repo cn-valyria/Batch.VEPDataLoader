@@ -9,7 +9,7 @@ on:
     - master
 
 env:
-  AZURE_FUNCTIONAPP_NAME: valyria-batch-vepdataloader
+  AZURE_FUNCTIONAPP_NAME: valyria-dataloader-vepdb
   AZURE_FUNCTIONAPP_PACKAGE_PATH: 'build'
   DOTNET_VERSION: '3.1.301'
 

@@ -12,14 +12,20 @@ namespace Functions
 
         public TimerEntryPoint(IVepDbRepository vepDbRepository) => _vepDbRepository = vepDbRepository;
 
-        [FunctionName(nameof(VEPTransactionsLoader))]
-        public async Task VEPTransactionsLoader([TimerTrigger("0 0 2,14 * * *")]TimerInfo myTimer, ILogger log)
+        [FunctionName(nameof(LoadTodaysData))]
+        public async Task LoadTodaysData([TimerTrigger("0 30 1 * * *")]TimerInfo myTimer, ILogger log)
         {
-            log.LogInformation($"{nameof(VEPTransactionsLoader)} function started execution at: {DateTime.Now}");
+            log.LogInformation($"{nameof(LoadTodaysData)} function started execution at: {DateTime.Now}");
 
             await _vepDbRepository.Execute.LoadTodaysTransactions();
 
-            log.LogInformation($"{nameof(VEPTransactionsLoader)} function completed execution at: {DateTime.Now}");
+            log.LogInformation("Function has executed load_todays_transactions successfully.");
+
+            await _vepDbRepository.Execute.LoadTodaysLists();
+
+            log.LogInformation("Function has executed load_todays_lists successfully.");
+
+            log.LogInformation($"{nameof(LoadTodaysData)} function completed execution at: {DateTime.Now}");
         }
     }
 }

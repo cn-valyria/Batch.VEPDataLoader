@@ -13,5 +13,12 @@ namespace Repository.DataAccess
 
             await sqlConnection.ExecuteAsync("load_todays_transactions", commandType: CommandType.StoredProcedure);
         }
+
+        public async Task LoadTodaysLists()
+        {
+            using var sqlConnection = new MySqlConnection(_connectionString);
+
+            await sqlConnection.ExecuteAsync("load_todays_lists", commandType: CommandType.StoredProcedure);
+        }
     }
 }

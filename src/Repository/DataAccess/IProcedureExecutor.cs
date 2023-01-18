@@ -5,5 +5,6 @@ namespace Repository.DataAccess
     public interface IProcedureExecutor
     {
         Task LoadTodaysTransactions();
+        Task LoadTodaysLists();
     }
 }
